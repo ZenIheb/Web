@@ -1,0 +1,33 @@
+<div class="centred" >
+    <div  class="content_continer" >
+        <mat-card class="form">
+            <div class="login_text">
+                <h2>Login Account</h2>
+            </div>
+            <form class="example-form"  fxLayout="column">
+                <mat-form-field class="user" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" name="email" matInput placeholder="Ex. pat@example.com" [(ngModel)]="UsersObj.username">
+                    <mat-hint></mat-hint>
+                    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                      <mat-error>Please enter a valid email address</mat-error>
+                    }
+                    @if (emailFormControl.hasError('required')) {
+                      <mat-error>Email is <strong>required</strong></mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field class="password" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput name="password" [type]="hide ? 'password' : 'text'" [(ngModel)]="UsersObj.password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button  mat-flat-button class="button" color="primary" type="submit" (click)="onLogin()">Login</button>
+            </form>
+        </mat-card>
+        <div class="image_container">
+            <img  src="assets\login_image.jpg" class="img1">
+       </div>
+    </div>
+</div>
